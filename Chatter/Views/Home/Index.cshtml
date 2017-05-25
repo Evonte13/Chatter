@@ -1,0 +1,156 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter Client</title>
+    <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div>
+    <h2>Chatter</h2>
+
+    <div>
+
+        <textarea maxlength="140" rows="3" cols="40" id="message"></textarea>
+        <br />
+
+        <button id="postChat" class="btn btn-primary">Chat</button>
+    </div>
+
+    <div id="allChats" class="chat-list">
+
+    </div>
+    <button id="getChats" class="btn btn-primary">Get Chats</button>
+
+    <span class="first">
+       
+        <span class="icon-edit new"></span>
+    </span>
+    <ul class="timeline">
+        <li>
+            <div class="avatar">
+                <img src="http://www.croop.cl/UI/twitter/images/doug.jpg">
+                <div class="hover">
+                    <div class="icon-twitter"></div>
+                </div>
+            </div>
+            <div class="bubble-container">
+                <div class="bubble">
+                    <div class="retweet">
+                        <div class="icon-retweet"></div>
+                    </div>
+                    <h3>russel</h3> retweeted <h3>doug</h3><br />
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, iusto, maxime, ullam autem a voluptate rem quos repudiandae.
+                    <div class="over-bubble">
+                        <div class="icon-mail-reply action"></div>
+                        <div class="icon-retweet action"></div>
+                        <div class="icon-star"></div>
+                    </div>
+                </div>
+
+                <div class="arrow"></div>
+            </div>
+        </li>
+        <li>
+            <div class="avatar">
+                <img src="http://www.croop.cl/UI/twitter/images/carl.jpg">
+                <div class="hover">
+                    <div class="icon-twitter"></div>
+                </div>
+            </div>
+            <div class="bubble-container">
+                <div class="bubble">
+                    <h3>carlf</h3><br />
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, iusto, maxime, ullam autem a voluptate rem quos repudiandae.
+                    <div class="over-bubble">
+                        <div class="icon-mail-reply action"></div>
+                        <div class="icon-retweet action"></div>
+                        <div class="icon-star"></div>
+                    </div>
+                </div>
+                <div class="arrow"></div>
+            </div>
+        </li>
+        <li>
+            <div class="avatar">
+                <img src="http://www.croop.cl/UI/twitter/images/russel.jpg">
+                <div class="hover">
+                    <div class="icon-twitter"></div>
+                </div>
+            </div>
+            <div class="bubble-container">
+                <div class="bubble">
+                    <h3>russel</h3><br />
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, iusto, maxime, ullam autem a voluptate rem quos repudiandae.
+                    <div class="over-bubble">
+                        <div class="icon-mail-reply action"></div>
+                        <div class="icon-retweet action"></div>
+                        <div class="icon-star"></div>
+                    </div>
+                </div>
+                <div class="arrow"></div>
+            </div>
+        </li>
+        <li>
+            <div class="avatar">
+                <img src="http://www.croop.cl/UI/twitter/images/carl.jpg">
+                <div class="hover">
+                    <div class="icon-twitter"></div>
+                </div>
+            </div>
+            <div class="bubble-container">
+                <div class="bubble">
+                    <h3>carlf</h3><br />
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, iusto, maxime, ullam autem a voluptate rem quos repudiandae.
+                    <div class="over-bubble">
+                        <div class="icon-mail-reply action"></div>
+                        <div class="icon-retweet action"></div>
+                        <div class="icon-star"></div>
+                    </div>
+                </div>
+                <div class="arrow"></div>
+            </div>
+        </li>
+    </ul>
+
+    </div>
+
+
+
+  @section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            //send chat to controller on click
+            $('#postChat').click(function() {
+                //assign variable to hold  message it can be sent to the controller usering the post method
+                var message = $('#message').val();
+                //use post method to send message to controller
+                $.post("@Url.Action("PostChats", "Chats")", { "Message": message })
+                //clear the input field
+                $('#message').val("");
+                //display all chats
+                displayChats();
+            });
+
+
+            //update the chats area when the get chats button is clicked
+            $('#getChats').click(displayChats);
+
+            
+         
+
+                    });
+
+                })
+            }
+        });
+    </script>
+}
+
+</body>
+</html>
